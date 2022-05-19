@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_cli_cf_flutter/app/cores/core_styles.dart';
 
 import '../../../cores/core_colors.dart';
 import '../controllers/konsultasi_controller.dart';
@@ -8,25 +9,24 @@ import '../controllers/konsultasi_controller.dart';
 class KonsultasiView extends GetView<KonsultasiController> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 16),
-      child: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("History Diagnosa",
-                  style: TextStyle(
-                      color: CoreColor.primary,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold)),
-              Expanded(
-                child: MediaQuery.removePadding(
+    return Stack(
+      children: [
+        Container(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 50),
+                Text("History Diagnosa", style: CoreStyles.uTitle),
+                MediaQuery.removePadding(
                   context: context,
                   removeTop: true,
                   child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       itemCount: 10,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Container(
                           padding: EdgeInsets.all(8),
@@ -97,21 +97,21 @@ class KonsultasiView extends GetView<KonsultasiController> {
                         );
                       }),
                 ),
-              )
-            ],
+                SizedBox(height: 100),
+              ],
+            ),
           ),
-          Positioned(
-              right: 16,
-              bottom: 16,
-              child: FloatingActionButton(
-                focusColor: CoreColor.primary,
-                hoverColor: CoreColor.primary,
-                backgroundColor: CoreColor.primary,
-                onPressed: () {},
-                child: Icon(Icons.add),
-              ))
-        ],
-      ),
+        ),
+        Positioned(
+          right: 8,
+          bottom: 100,
+          child: FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: CoreColor.primary,
+            child: Icon(Icons.add),
+          ),
+        )
+      ],
     );
   }
 }

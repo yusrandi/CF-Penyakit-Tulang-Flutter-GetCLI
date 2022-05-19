@@ -5,6 +5,7 @@ import 'package:get_cli_cf_flutter/app/modules/dashboard/views/dashboard_view.da
 import 'package:get_cli_cf_flutter/app/modules/home/bindings/home_binding.dart';
 import 'package:get_cli_cf_flutter/app/modules/home/views/home_view.dart';
 import 'package:get_cli_cf_flutter/app/modules/informasi/bindings/informasi_binding.dart';
+import 'package:get_cli_cf_flutter/app/modules/informasi/views/detail_informasi.dart';
 import 'package:get_cli_cf_flutter/app/modules/informasi/views/informasi_view.dart';
 import 'package:get_cli_cf_flutter/app/modules/konsultasi/bindings/konsultasi_binding.dart';
 import 'package:get_cli_cf_flutter/app/modules/konsultasi/views/konsultasi_view.dart';
@@ -39,6 +40,11 @@ class AppPages {
     GetPage(
       name: _Paths.INFORMASI,
       page: () => InformasiView(),
+      binding: InformasiBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL,
+      page: () => DetailInformasi(),
       binding: InformasiBinding(),
     ),
     GetPage(

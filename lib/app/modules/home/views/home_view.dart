@@ -15,39 +15,44 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(color: CoreColor.whiteSoft),
-        child: Column(
+        child: Stack(
           children: [
-            Obx((() => Expanded(
-                child: Container(
-                    child: controller.count.value == 0
-                        ? DashboardView()
-                        : controller.count.value == 1
-                            ? InformasiView()
-                            : controller.count.value == 2
-                                ? KonsultasiView()
-                                : TentangView())))),
-            Container(
-              margin: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(25)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                      flex: 1,
-                      child: _listMenu("assets/icons/home-filled.svg", 0)),
-                  Expanded(
-                      flex: 1,
-                      child: _listMenu("assets/icons/bookmark-filled.svg", 1)),
-                  Expanded(
-                      flex: 1,
-                      child: _listMenu("assets/icons/Bill Icon.svg", 2)),
-                  Expanded(
-                      flex: 1,
-                      child: _listMenu("assets/icons/Settings.svg", 3)),
-                ],
+            Obx((() => Container(
+                child: controller.count.value == 0
+                    ? DashboardView()
+                    : controller.count.value == 1
+                        ? InformasiView()
+                        : controller.count.value == 2
+                            ? KonsultasiView()
+                            : TentangView()))),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 80,
+                margin: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: _listMenu("assets/icons/home-filled.svg", 0)),
+                    Expanded(
+                        flex: 1,
+                        child:
+                            _listMenu("assets/icons/bookmark-filled.svg", 1)),
+                    Expanded(
+                        flex: 1,
+                        child: _listMenu("assets/icons/Bill Icon.svg", 2)),
+                    Expanded(
+                        flex: 1,
+                        child: _listMenu("assets/icons/Settings.svg", 3)),
+                  ],
+                ),
               ),
             ),
           ],

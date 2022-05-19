@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:get_cli_cf_flutter/app/cores/core_styles.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../cores/core_colors.dart';
@@ -18,7 +19,7 @@ class DashboardView extends GetView<DashboardController> {
     return Stack(
       children: [
         Positioned(
-            top: 16,
+            top: 50,
             right: 16,
             left: 16,
             child: Row(
@@ -26,11 +27,7 @@ class DashboardView extends GetView<DashboardController> {
                 SvgPicture.asset("assets/icons/Bell.svg",
                     color: CoreColor.primary),
                 SizedBox(width: 16),
-                Text("Userundie de Lahoya",
-                    style: TextStyle(
-                        color: CoreColor.primary,
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold)),
+                Text("Userundie de Lahoya", style: CoreStyles.uTitle),
               ],
             )),
         Center(child: Lottie.asset(CoreImages.homeDoctorJson)),
@@ -76,6 +73,7 @@ class DashboardView extends GetView<DashboardController> {
                     )
                   ],
                 ),
+                SizedBox(height: 100),
               ],
             ))
       ],
