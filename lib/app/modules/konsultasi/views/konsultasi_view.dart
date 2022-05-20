@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:get_cli_cf_flutter/app/cores/core_styles.dart';
+import 'package:get_cli_cf_flutter/app/routes/app_pages.dart';
 
 import '../../../cores/core_colors.dart';
 import '../controllers/konsultasi_controller.dart';
@@ -106,7 +107,9 @@ class KonsultasiView extends GetView<KonsultasiController> {
           right: 8,
           bottom: 100,
           child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.DIAGNOSA);
+            },
             backgroundColor: CoreColor.primary,
             child: Icon(Icons.add),
           ),
