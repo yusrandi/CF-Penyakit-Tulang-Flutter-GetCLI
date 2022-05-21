@@ -16,4 +16,6 @@ class Api {
   String getPenyakits = "$baseURL/penyakit";
   String getGejalas = "$baseURL/gejala";
   String getBasis = "$baseURL/basis";
+  String getLaporan = "$baseURL/laporan";
+  String getUser = "$baseURL/user";
 }

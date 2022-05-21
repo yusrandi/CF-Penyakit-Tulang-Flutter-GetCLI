@@ -10,7 +10,7 @@ import '../../../routes/app_pages.dart';
 import '../../home/views/home_view.dart';
 import '../controllers/informasi_controller.dart';
 
-class InformasiView extends GetView<InformasiController> {
+class InformasiSendiView extends GetView<InformasiController> {
   final informasiController = Get.put(InformasiController());
 
   final listItem = [
@@ -29,27 +29,14 @@ class InformasiView extends GetView<InformasiController> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 50),
-            Text("Infromasi Penyakit Tulang",
+            Text("Infromasi Penyakit Sendi",
                 style: TextStyle(
                     color: CoreColor.primary,
                     fontSize: 24,
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 16),
-            Text("Penyakit Tulang", style: CoreStyles.uSubTitle),
             Text(
-                "     Penyakit tulang dapat terjadi secara spontan tanpa disebabkan gerakan yang tiba-tiba, atau hanya karena kegiatan ringan yang sering tidak dapat diingat oleh orang-orang. Ada berbagai pada penyakit tulang antara lain:"
-                    .indent(10),
-                style: TextStyle(
-                  color: CoreColor.kTextColor,
-                  fontSize: 14,
-                )),
-            Obx(() => menuItem(0)),
-            Obx(() => menuItem(1)),
-            Obx(() => menuItem(2)),
-            SizedBox(height: 16),
-            Text("Penyakit Sendi", style: CoreStyles.uSubTitle),
-            Text(
-                "     Penyakit tulang dapat terjadi secara spontan tanpa disebabkan gerakan yang tiba-tiba, atau hanya karena kegiatan ringan yang sering tidak dapat diingat oleh orang-orang. Ada berbagai pada penyakit tulang antara lain:"
+                "     Penyakit sendi adalah rasa sakit pada bagian tubuh yang menghubungkan tulang dengan tulang dan menyebabkan pergerakan dan kualitas hidup penderitanya menjadi tergannggu serta kurangnya produktIFitas bagi penderita."
                     .indent(10),
                 style: TextStyle(
                   color: CoreColor.kTextColor,

@@ -24,7 +24,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
     return Scaffold(
       backgroundColor: CoreColor.whiteSoft,
       appBar: AppBar(
-        title: Text('DiagnosaView'),
+        title: Text('Form Diagnosa'),
         centerTitle: false,
         backgroundColor: CoreColor.primary,
       ),

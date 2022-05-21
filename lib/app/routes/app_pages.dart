@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_cli_cf_flutter/app/modules/informasi/views/informasi_tulang_view.dart';
 import 'package:get_cli_cf_flutter/app/modules/result/bindings/result_binding.dart';
 import 'package:get_cli_cf_flutter/app/modules/result/views/result_view.dart';
 
@@ -10,7 +11,7 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/informasi/bindings/informasi_binding.dart';
 import '../modules/informasi/views/detail_informasi.dart';
-import '../modules/informasi/views/informasi_view.dart';
+import '../modules/informasi/views/informasi_sendi_view.dart';
 import '../modules/konsultasi/bindings/konsultasi_binding.dart';
 import '../modules/konsultasi/views/konsultasi_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -42,8 +43,13 @@ class AppPages {
       binding: DashboardBinding(),
     ),
     GetPage(
-      name: _Paths.INFORMASI,
-      page: () => InformasiView(),
+      name: _Paths.INFORMASI_TULANG,
+      page: () => InformasiTulangView(),
+      binding: InformasiBinding(),
+    ),
+    GetPage(
+      name: _Paths.INFORMASI_SENDI,
+      page: () => InformasiSendiView(),
       binding: InformasiBinding(),
     ),
     GetPage(

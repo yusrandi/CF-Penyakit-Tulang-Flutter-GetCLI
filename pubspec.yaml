@@ -16,6 +16,7 @@ dependencies:
   http: 0.13.4
   cool_dropdown: ^1.4.1
   drop_down_list: ^0.0.2
+  get_storage: ^2.0.3
 
   flutter:
     sdk: flutter
