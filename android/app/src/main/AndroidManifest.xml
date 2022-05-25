@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.use.get_cli_cf_flutter">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
    <application
         android:label="get_cli_cf_flutter"
         android:name="${applicationName}"

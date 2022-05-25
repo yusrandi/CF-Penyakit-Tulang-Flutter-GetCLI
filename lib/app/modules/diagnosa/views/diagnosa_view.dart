@@ -30,56 +30,56 @@ class DiagnosaView extends GetView<DiagnosaController> {
       ),
       body: Container(
         margin: EdgeInsets.all(8),
-        child: Column(
-          children: [
-            FutureBuilder<List<Gejala>>(
-                future: diagnosaController.getGejala(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  print(snapshot.data);
-                  if (snapshot.data!.isEmpty) {
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              FutureBuilder<List<Gejala>>(
+                  future: diagnosaController.getGejala(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    print(snapshot.data);
+                    if (snapshot.data!.isEmpty) {
+                      return Container(
+                        child: Center(
+                          child: Text('DIagnosa Belum Tersedia'),
+                        ),
+                      );
+                    }
                     return Container(
-                      child: Center(
-                        child: Text('DIagnosa Belum Tersedia'),
-                      ),
-                    );
-                  }
-                  return Container(
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
                       child: Column(
                         children: [
                           listGejala(snapshot),
                         ],
                       ),
-                    ),
-                  );
+                    );
+                  }),
+              SizedBox(height: 16),
+              GestureDetector(
+                onTap: (() {
+                  Get.toNamed(Routes.RESULT,
+                      arguments: diagnosaController.dataListResult.value);
+                  print(
+                      "DiagnosaView length ${diagnosaController.dataListResult.value[0].value}");
                 }),
-            SizedBox(height: 16),
-            GestureDetector(
-              onTap: (() {
-                Get.toNamed(Routes.RESULT,
-                    arguments: diagnosaController.dataListResult.value);
-                print(
-                    "DiagnosaView length ${diagnosaController.dataListResult.value[0].value}");
-              }),
-              child: Container(
-                height: 60,
-                margin: EdgeInsets.all(8),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: CoreColor.primary),
-                child: Center(
-                    child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                )),
+                child: Container(
+                  height: 60,
+                  margin: EdgeInsets.all(8),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: CoreColor.primary),
+                  child: Center(
+                      child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  )),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

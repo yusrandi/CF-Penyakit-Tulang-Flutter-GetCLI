@@ -130,7 +130,8 @@ class KonsultasiView extends GetView<KonsultasiController> {
             backgroundColor: CoreColor.primary,
             child: Icon(Icons.add),
           ),
-        )
+        ),
+        Align(alignment: Alignment.bottomCenter, child: Container()),
       ],
     );
   }
