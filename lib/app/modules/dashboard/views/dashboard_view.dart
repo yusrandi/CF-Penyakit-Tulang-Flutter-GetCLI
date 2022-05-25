@@ -7,9 +7,12 @@ import 'package:lottie/lottie.dart';
 
 import '../../../cores/core_colors.dart';
 import '../../../cores/core_images.dart';
+import '../../result/controllers/result_manager.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
+  final ResultManager resultManager = Get.put(ResultManager());
+
   @override
   Widget build(BuildContext context) {
     return body();
@@ -47,7 +50,13 @@ class DashboardView extends GetView<DashboardController> {
                   children: [
                     Column(
                       children: [
-                        Text("58%",
+                        Text(
+                            resultManager.getTulang() == null
+                                ? '...'
+                                : (resultManager.getTulang()! * 100)
+                                        .round()
+                                        .toString() +
+                                    ' %',
                             style: TextStyle(
                                 color: CoreColor.primary,
                                 fontSize: 36,
@@ -60,7 +69,13 @@ class DashboardView extends GetView<DashboardController> {
                     ),
                     Column(
                       children: [
-                        Text("28%",
+                        Text(
+                            resultManager.getSendi() == null
+                                ? '...'
+                                : (resultManager.getSendi()! * 100)
+                                        .round()
+                                        .toString() +
+                                    ' %',
                             style: TextStyle(
                                 color: CoreColor.primary,
                                 fontSize: 36,

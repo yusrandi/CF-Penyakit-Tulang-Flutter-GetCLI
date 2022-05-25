@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:get_cli_cf_flutter/app/cores/core_colors.dart';
+import 'package:get_cli_cf_flutter/app/modules/result/controllers/result_manager.dart';
 import 'package:get_cli_cf_flutter/app/routes/app_pages.dart';
 
 import '../../../cores/core_styles.dart';
@@ -10,6 +11,7 @@ import '../controllers/result_controller.dart';
 
 class ResultView extends GetView<ResultController> {
   final ResultController resultController = Get.put(ResultController());
+  final ResultManager resultManager = Get.put(ResultManager());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,24 +64,6 @@ class ResultView extends GetView<ResultController> {
         // ),
 
         list.isNotEmpty ? kesimpulan(list) : Container(),
-        GestureDetector(
-          onTap: (() {
-            Get.offAndToNamed(Routes.HOME);
-          }),
-          child: Container(
-            height: 60,
-            margin: EdgeInsets.all(8),
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: CoreColor.primary),
-            child: Center(
-                child: Text(
-              'Selesai',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            )),
-          ),
-        ),
       ],
     );
   }
@@ -154,6 +138,29 @@ class ResultView extends GetView<ResultController> {
                     ]),
               ),
             )),
+        GestureDetector(
+          onTap: (() {
+            resultController.storeResult(
+                list[0].penyakit!.id.toString(), list[0].value.toString());
+
+            list[0].penyakit!.status == "PT"
+                ? resultManager.saveTulang(tulang: list[0].value)
+                : resultManager.saveSendi(sendi: list[0].value);
+          }),
+          child: Container(
+            height: 60,
+            margin: EdgeInsets.all(8),
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: CoreColor.primary),
+            child: Center(
+                child: Text(
+              'Selesai',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            )),
+          ),
+        ),
       ],
     );
   }

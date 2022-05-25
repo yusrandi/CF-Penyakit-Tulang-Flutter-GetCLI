@@ -4,7 +4,10 @@ import 'package:get/get.dart';
 import 'package:get_cli_cf_flutter/app/data/models/basis.dart';
 import 'package:get_cli_cf_flutter/app/data/models/penyakit.dart';
 import 'package:get_cli_cf_flutter/app/data/services/basis_service.dart';
+import 'package:get_cli_cf_flutter/app/data/services/laporan_service.dart';
 import 'package:get_cli_cf_flutter/app/data/services/penyakit_service.dart';
+import 'package:get_cli_cf_flutter/app/modules/auth/controllers/authentication_manager.dart';
+import 'package:get_cli_cf_flutter/app/routes/app_pages.dart';
 
 import '../../../data/models/gejala.dart';
 import '../../../data/services/gejala_service.dart';
@@ -15,6 +18,7 @@ class ResultController extends GetxController {
   final resultText = "".obs;
 
   RxList<ResultModel> dataListResult = (List<ResultModel>.of([])).obs;
+  final AuthenticationManager authenticationManager = Get.find();
 
   @override
   void onInit() async {
@@ -90,6 +94,15 @@ class ResultController extends GetxController {
 
   Future<List<BasisModel>> getBasis() async {
     return await BasisService().fetchBasis();
+  }
+
+  Future<String> storeResult(String penyakit_id, String cf) async {
+    String result = await LaporanService()
+        .laporanStore(penyakit_id, authenticationManager.getToken()!, cf);
+
+    Get.offAndToNamed(Routes.HOME);
+
+    return result;
   }
 }
 
